@@ -1,20 +1,18 @@
 import axios from 'axios'
 import { useState, useEffect  } from 'react'
-import './CityCard'
+import './CityCard.scss'
 
 const CityCard = ({cityData}) => {
-    //console.log("avant fetch :" + cityData)
     //States de l'appli
     const [currentWeather, setCurrentWeather] = useState({});
     const [loading, setLoading] = useState(true);
 
     //Appel API
     const fetchCurrentWeather = async () => {
-        //console.log("début fetch : " + cityData);
         try {
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cityData.lat}&lon=${cityData.lon}&appid=ac2ddbeaf63004ea80756a0156a76da8&units=metric`);
-        console.log(response.data);
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cityData.lat}&lon=${cityData.lon}&appid=ac2ddbeaf63004ea80756a0156a76da8&lang=fr&units=metric`);
         setCurrentWeather(response.data);
+        console.log(response.data);
         }
         catch(err) {
             console.error(err)
@@ -26,6 +24,7 @@ const CityCard = ({cityData}) => {
         
     }
 
+
     useEffect(() => {
         fetchCurrentWeather()
     }, []);
@@ -34,15 +33,20 @@ const CityCard = ({cityData}) => {
 
         <>  
             {!loading && 
-            <div>
-                <p> Température : {currentWeather.main.temp} </p>
-                <p> Description du temps :  </p>
-                <img src="" alt="icon" />
-                <p> {currentWeather.name} </p>
-            </div>}
+            <section className='city-card'>
+                <div className='city-card-flex'>
+                    <h2 className='city-card-title'> {currentWeather.name} </h2>
+                    <p className='city-card-description'>{currentWeather.weather[0].description} </p>
+                </div>
+                <div className='city-card-flex'>
+                    <p className='city-card-temp'> {Math.floor(currentWeather.main.temp)} °</p>
+                    <img className='city-card-img'src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} alt="icon" />
+                </div>
+            </section>}
             
         </>
     )
+
 }
 
 export default CityCard

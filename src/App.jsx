@@ -6,12 +6,12 @@ import HomePage from './pages/HomePage/HomePage'
 function App() {
 
   return (
-    <>
+    <main className='main-content'>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/cityPage' element={<CityPage />} />
       </Routes>
-    </>
+    </main>
   )
 }
 
