@@ -15,7 +15,7 @@ const HomePage = () => {
     return (
         <>
             <h1> Home page </h1>
-            <SearchBar />
+            <SearchBar cities={cities} setCities = {setCities} />
             {cities.map((city, index) => {
                 console.log("avant"+city)
                 return (<CityCard key={index} cityData={city} />)
