@@ -22,8 +22,6 @@ const CityCard = ({cityData}) => {
         finally {
             setLoading(false)
         }
-        
-        
     }
 
     useEffect(() => {
