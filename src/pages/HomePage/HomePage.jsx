@@ -9,12 +9,7 @@ const HomePage = () => {
 
     //State des villes
     const [cities, setCities] = useState([
-        {lon:"10.99", lat:"44.34"},
-        {lon:"-1.79", lat:"46.49"},
-        {lon:"1.10", lat:"49.43"},
-        {lon:"1.90", lat:"47.90"}
-
-
+        {name:'Orléans', lon:"10.99", lat:"44.34"},
     ]);
     
     return (
