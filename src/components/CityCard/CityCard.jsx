@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect  } from 'react'
 import './CityCard.scss'
+const API_KEY = import.meta.env.VITE_API_KEY
 
 const CityCard = ({cityData}) => {
     //States de l'appli
@@ -10,7 +11,7 @@ const CityCard = ({cityData}) => {
     //Appel API
     const fetchCurrentWeather = async () => {
         try {
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cityData.lat}&lon=${cityData.lon}&appid=ac2ddbeaf63004ea80756a0156a76da8&lang=fr&units=metric`);
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cityData.lat}&lon=${cityData.lon}&appid=${API_KEY}&lang=fr&units=metric`);
         setCurrentWeather(response.data);
         console.log(response.data);
         }
@@ -20,8 +21,6 @@ const CityCard = ({cityData}) => {
         finally {
             setLoading(false)
         }
-        
-        
     }
 
 

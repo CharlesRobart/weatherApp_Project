@@ -19,13 +19,12 @@ const HomePage = () => {
     return (
         <div className='home-page-container'>
             <h1 className='home-page-title'> Météo </h1>
-            <SearchBar />
+            <SearchBar cities={cities} setCities = {setCities} />
             <div className='city-card-container'>
                 {cities.map((city, index) => {
                     return (<CityCard key={index} cityData={city} />)
                 })}
             </div>
-            
         </div>
     )
 }

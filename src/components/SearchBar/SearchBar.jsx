@@ -1,21 +1,56 @@
 import './SearchBar.scss'
+import {useState} from 'react'
+import PlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 
-const SearchBar = () => {
+const SearchBar = ({ cities, setCities }) => {
+
+    const [address, setAddress] = useState('');
+
+    const handleSelect = async value => {
+        const results = await geocodeByAddress(value);
+        const latLng = await getLatLng(results[0]);
+        setAddress('');
+        console.log(results);
+        console.log(latLng);
+        
+        //Créer la nouvelle ville et l'ajouter à cities
+        const newCity = {
+            name:results[0].formatted_address,
+            lon:latLng.lng,
+            lat:latLng.lat
+        }
+
+        setCities([...cities, newCity])
+
+    };
+
     return (
-        <>
-        <form className="search-form">
-            <div className="search-bar">
-                <input className="search-input" type="text"/>
-                    <button className="search-submit" type="submit">
-                      Search
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={0.5} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round"d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-                      </svg>
-                    </button>
-            </div>
-        </form>
-        </>
-    )
+        <PlacesAutocomplete
+            value={address}
+            onChange={setAddress}
+            onSelect={handleSelect}
+        >
+            {({ getInputProps, suggestions, getSuggestionItemProps }) => (
+                <div>
+                    <input {...getInputProps({ placeholder: 'Recherchez une ville...' })} />
+                    <div>
+                        <div className="suggestions-container" >
+                            {suggestions.map((suggestion , index) => {
+                                const style = suggestion.active
+                                    ? { backgroundColor: '#345995', cursor: 'pointer' }
+                                    : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                return (
+                                    <div key={index} {...getSuggestionItemProps(suggestion, { style })}>
+                                        {suggestion.description}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            )}
+        </PlacesAutocomplete>
+    );
 }
 
 export default SearchBar

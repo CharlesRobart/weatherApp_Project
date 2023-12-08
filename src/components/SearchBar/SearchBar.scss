@@ -21,3 +21,9 @@
   max-width: 100%;
   border-radius: 10px;
 }
+
+.suggestions-container {
+    position: absolute;
+    z-index: 1000;
+    color : black;
+}
