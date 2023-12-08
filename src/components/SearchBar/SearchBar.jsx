@@ -31,9 +31,8 @@ const SearchBar = ({ cities, setCities }) => {
             onSelect={handleSelect}
         >
             {({ getInputProps, suggestions, getSuggestionItemProps }) => (
-                <div>
-                    <input {...getInputProps({ placeholder: 'Recherchez une ville...' })} />
-                    <div>
+                    <div className='search-bar'>
+                        <input className='search-bar-input' {...getInputProps({ placeholder: 'Recherchez une ville...' })} />
                         <div className="suggestions-container" >
                             {suggestions.map((suggestion , index) => {
                                 const style = suggestion.active
@@ -47,7 +46,6 @@ const SearchBar = ({ cities, setCities }) => {
                             })}
                         </div>
                     </div>
-                </div>
             )}
         </PlacesAutocomplete>
     );
