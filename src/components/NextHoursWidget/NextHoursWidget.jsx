@@ -9,7 +9,8 @@ const NextHoursWidget = ({cityData}) => {
 
     const convertUnixTimeToTime = (unixTime) => {
         const date = new Date(unixTime * 1000);
-        return date.toLocaleTimeString('fr-FR');
+        let options = { hour: '2-digit', minute: '2-digit' };
+        return date.toLocaleTimeString('fr-FR', options);
     };
 
     const fetchNextHoursWeather = async () => {
@@ -31,7 +32,6 @@ const NextHoursWidget = ({cityData}) => {
         fetchNextHoursWeather()
     }, []);
 
-    console.log(nextHoursWeather.list)
     
     return (
         <>  
@@ -39,7 +39,7 @@ const NextHoursWidget = ({cityData}) => {
             <>
             <h2>Météo des prochaines heures</h2>
             <div>
-            {nextHoursWeather.list.slice(0, 3).map((city, index) => {
+            {nextHoursWeather.list.slice(0, 5).map((city, index) => {
                 return (
                     <p key={index}>{convertUnixTimeToTime(city.dt)} {city.main.temp}°</p>
                 )
