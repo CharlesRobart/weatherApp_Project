@@ -2,24 +2,17 @@ import axios from 'axios'
 import { useState, useEffect  } from 'react'
 import './NextDaysWidget'
 
-const NextDaysWidget = () => {
-    
+const NextDaysWidget = ({cityData}) => {
+    console.log(cityData)
     const [nextDaysWeather, setNextDaysWeather] = useState({});
     const [loading, setLoading] = useState(true);
 
-    const convertUnixTimeToDate = (unixTime) => {
-        const date = new Date(unixTime * 1000);
-        return date.toLocaleDateString('fr-FR', {
-            weekday: 'short', 
-            day: 'numeric', 
-            month: 'short'
-        });
-    };
+    
 
     const fetchNextDaysWeather = async () => {
         
         try {
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=ac2ddbeaf63004ea80756a0156a76da8&units=metric`);
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${cityData.lat}&lon=${cityData.lat}&appid=ac2ddbeaf63004ea80756a0156a76da8&units=metric`);
             
             setNextDaysWeather(response.data);
         }
@@ -34,9 +27,21 @@ const NextDaysWidget = () => {
     useEffect(() => {
         fetchNextDaysWeather()
     }, []);
+
+    const convertUnixTimeToDate = (unixTime) => {
+        const date = new Date(unixTime * 1000);
+        return date.toLocaleDateString('fr-FR', {
+            weekday: 'short', 
+            day: 'numeric', 
+            month: 'short'
+        });
+    };
     
      // Fonction de filtrage pour obtenir les prévisions de midi
     const filterForNoonForecast = (forecastList) => {
+        if (!forecastList) {
+            return []; // Retourne un tableau vide si forecastList est undefined ou null
+        }
         return forecastList.filter(forecast => {
             const date = new Date(forecast.dt * 1000);
             return date.getHours() === 13; // Filtrer pour obtenir les prévisions de midi

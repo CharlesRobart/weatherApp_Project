@@ -3,7 +3,7 @@ import { useState, useEffect  } from 'react'
 import './NextHoursWidget'
 
 const NextHoursWidget = ({cityData}) => {
-    //console.log(cityData)
+    
     const [nextHoursWeather, setNextHoursWeather] = useState({});
     const [loading, setLoading] = useState(true);
 

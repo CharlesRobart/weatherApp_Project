@@ -15,10 +15,10 @@ const CityPage = () => {
     
     return (
         <>
-            <h1> City Page</h1>
+            <h1>City Page</h1>
             <CurrentWeatherWidget cityData={cities}/>
             <NextHoursWidget cityData={cities}/>
-            <NextDaysWidget />
+            <NextDaysWidget cityData={cities}/>
         </>
     )
 }
