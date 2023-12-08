@@ -4,7 +4,10 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  text-decoration: none;
+  color:white
 }
+
 
 .city-card {
   display: flex;
@@ -28,6 +31,12 @@
 }
 
 .city-card-Smoke{
+  background-image: url('../../img/Brouillard.jpg!d');
+  background-size: cover;
+
+}
+
+.city-card-Mist{
   background-image: url('../../img/Brouillard.jpg!d');
   background-size: cover;
 
@@ -74,4 +83,13 @@
 
   text-align: right;
   height: 3vh;
+  border: none;
+  font-weight: bold;
+  background-color: rgba(128, 128, 128, 0.507);
+}
+
+.city-card-delete:hover{
+
+  background-color: grey;
+  color: white;
 }
