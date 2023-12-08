@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect  } from 'react'
-import './MyPositionCard.scss'
+import '../CityCard/CityCard.scss'
 import { Link } from 'react-router-dom'
 
 const API_KEY = import.meta.env.VITE_API_KEY

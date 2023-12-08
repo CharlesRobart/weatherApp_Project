@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect  } from 'react'
-import './NextDaysWidget'
+import './NextDaysWidget.scss'
 const API_KEY = import.meta.env.VITE_API_KEY
 
 const NextDaysWidget = ({cityData}) => {
@@ -35,7 +35,7 @@ const NextDaysWidget = ({cityData}) => {
             weekday: 'short', 
             day: 'numeric', 
             month: 'short'
-        });
+        });next-day-container
     };
     
      // Fonction de filtrage pour obtenir les prévisions de midi
@@ -51,14 +51,17 @@ const NextDaysWidget = ({cityData}) => {
 
     console.log(filterForNoonForecast(nextDaysWeather.list))
     return (
-        <div className='city-page-widget'>
+        <article className='city-page-widget'>
             {!loading && 
             <>
-            <h2>Météo des prochains jours</h2>
-            <div>
+            <h2 className='current-card-title'>Météo des prochains jours</h2>
+            <div  className='next-day-container'>
             {filterForNoonForecast(nextDaysWeather.list).map((city, index) => {
                 return (
-                    <p key={index}>{convertUnixTimeToDate(city.dt)} {city.weather[0].description}</p>
+                    <div className='next-day-time-icon' key={index}>
+                        <p className='next-day-title'>{convertUnixTimeToDate(city.dt)}</p>
+                        <img className='next-day-card-img'src={`https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`} alt="icon" />
+                    </div>
                 )
             })}
                 
@@ -66,7 +69,7 @@ const NextDaysWidget = ({cityData}) => {
             </>
             }
             
-        </div>
+        </article>
     )
 }
 

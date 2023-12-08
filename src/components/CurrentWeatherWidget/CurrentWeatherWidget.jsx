@@ -29,14 +29,23 @@ const CurrentWeatherWidget = ({cityData}) => {
     return (
         <>  
             {!loading && 
-            <div className='city-page-widget'>
-                <h2>Actuellement</h2>
-                <p> {Math.floor(currentWeather.main.temp)} °</p>
-                <p> {currentWeather.weather[0].description} </p>
-                <img src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} alt="icon" />
-                <p> Pression : {currentWeather.main.pressure} </p>
-                <p> Humidité : {currentWeather.main.humidity} %</p>
-                <p> Vent : {currentWeather.wind.speed} Km/h </p>
+            <div className='city-page-widget city-page-widget--current'>
+                <h2 className='current-card-title'>Actuellement</h2>
+
+                <div className='current-card-resum'>
+                    <div className=''>
+                        <p className='city-card-description'> {currentWeather.weather[0].description} </p>
+                        <p> Pression : {currentWeather.main.pressure} </p>
+                        <p> Humidité : {currentWeather.main.humidity} %</p>
+                        <p> Vent : {currentWeather.wind.speed} Km/h </p>
+                    </div>
+
+                    <div className=''>
+                        <p className='city-card-temp'> {Math.floor(currentWeather.main.temp)} °</p>
+                        <img className='city-card-img'src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} alt="icon" />
+                    </div>
+                </div>
+
             </div>}
             
         </>
