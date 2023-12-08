@@ -3,7 +3,7 @@ import { useState, useEffect  } from 'react'
 import './CityCard.scss'
 const API_KEY = import.meta.env.VITE_API_KEY
 
-const CityCard = ({cityData}) => {
+const CityCard = ({cityData, onDeleteCard}) => {
     //States de l'appli
     const [currentWeather, setCurrentWeather] = useState({});
     const [loading, setLoading] = useState(true);
@@ -13,8 +13,8 @@ const CityCard = ({cityData}) => {
         try {
             const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cityData.lat}&lon=${cityData.lon}&appid=${API_KEY}&lang=fr&units=metric`);
         setCurrentWeather(response.data);
-        console.log(response.data);
         }
+
         catch(err) {
             console.error(err)
         }
@@ -25,14 +25,21 @@ const CityCard = ({cityData}) => {
 
 
     useEffect(() => {
-        fetchCurrentWeather()
-    }, []);
+        fetchCurrentWeather(currentWeather)
+    }, [cityData]);
+
+    
+    const deleteCard = ((event)=>{
+        const cardElement = event.target.closest('.city-card');
+        onDeleteCard(cardElement);
+    })
 
     return (
 
         <>  
             {!loading && 
-            <section className='city-card'>
+            <section id = {currentWeather.id} className='city-card'>
+                <button onClick={(event)=> deleteCard(event)} className='city-card-delete'> X </button>
                 <div className='city-card-flex'>
                     <h2 className='city-card-title'> {cityData.name} </h2>
                     <p className='city-card-description'>{currentWeather.weather[0].description} </p>

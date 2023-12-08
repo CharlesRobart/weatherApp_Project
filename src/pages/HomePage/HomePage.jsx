@@ -11,6 +11,11 @@ const HomePage = () => {
     const [cities, setCities] = useState([
         {name:'Orléans', lon:"10.99", lat:"44.34"},
     ]);
+
+    const onDeleteCard = (cardElement) => {
+        const deleteCard = cities.filter((city, index) => index !== cardElement);
+        setCities(deleteCard);
+      };
     
     return (
         <div className='home-page-container'>
@@ -18,11 +23,13 @@ const HomePage = () => {
             <SearchBar cities={cities} setCities = {setCities} />
             <div className='city-card-container'>
                 {cities.map((city, index) => {
+
                     return (
                         <Link className='city-card-link' to={`/city/${city.lat}/${city.lon}`}> 
-                            <CityCard key={index} cityData={city} />
+                            <CityCard key={index} cityData={city}  onDeleteCard={() => onDeleteCard(index)}/>
                         </Link>
                     )
+
                 })}
             </div>
         </div>
