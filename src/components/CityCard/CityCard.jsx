@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect  } from 'react'
 import './CityCard.scss'
+import { Link } from 'react-router-dom'
 const API_KEY = import.meta.env.VITE_API_KEY
 
 const CityCard = ({cityData, onDeleteCard}) => {
@@ -40,14 +41,16 @@ const CityCard = ({cityData, onDeleteCard}) => {
             {!loading && 
             <section id = {currentWeather.id} className='city-card'>
                 <button onClick={(event)=> deleteCard(event)} className='city-card-delete'> X </button>
-                <div className='city-card-flex'>
-                    <h2 className='city-card-title'> {cityData.name} </h2>
-                    <p className='city-card-description'>{currentWeather.weather[0].description} </p>
-                </div>
-                <div className='city-card-flex'>
-                    <p className='city-card-temp'> {Math.floor(currentWeather.main.temp)} °</p>
-                    <img className='city-card-img'src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} alt="icon" />
-                </div>
+                <Link className='city-card-link' to={`/city/${cityData.lat}/${cityData.lon}`}> 
+                    <div className='city-card-flex'>
+                        <h2 className='city-card-title'> {cityData.name} </h2>
+                        <p className='city-card-description'>{currentWeather.weather[0].description} </p>
+                    </div>
+                    <div className='city-card-flex'>
+                        <p className='city-card-temp'> {Math.floor(currentWeather.main.temp)} °</p>
+                        <img className='city-card-img'src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} alt="icon" />
+                    </div>
+                </Link>
             </section>}
             
         </>

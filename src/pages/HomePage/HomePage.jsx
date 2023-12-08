@@ -1,7 +1,6 @@
 //import axios from 'axios'
 import './HomePage.scss'
 import { useState  } from 'react'
-import { Link } from 'react-router-dom'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import CityCard from '../../components/CityCard/CityCard'
 
@@ -25,9 +24,7 @@ const HomePage = () => {
                 {cities.map((city, index) => {
 
                     return (
-                        <Link className='city-card-link' to={`/city/${city.lat}/${city.lon}`}> 
-                            <CityCard key={index} cityData={city}  onDeleteCard={() => onDeleteCard(index)}/>
-                        </Link>
+                        <CityCard key={index} cityData={city}  onDeleteCard={() => onDeleteCard(index)}/>
                     )
 
                 })}
