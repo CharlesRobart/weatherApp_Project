@@ -27,7 +27,6 @@ const HomePage = () => {
                         <Link className='city-card-link' to={`/city/${city.lat}/${city.lon}`}> 
                             <CityCard key={index} cityData={city} />
                         </Link>
-                        
                     )
                 })}
             </div>

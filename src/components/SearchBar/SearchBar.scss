@@ -1,29 +1,19 @@
-.search-form {
-  margin: auto;
-  text-align: center;
+.search-bar {
+  width: 100%;
+  margin-bottom: 25px;
 }
 
-.search-bar{
+.search-bar-input{
   display: flex;
   justify-content: center;
-  height: 9vh;
-  padding-bottom:2% ;
-
-}
-
-.search-input {
-
+  padding: 1rem;
   width: 100%;
   border-radius: 25px;
-}
-
-.search-submit {
-  max-width: 100%;
-  border-radius: 10px;
 }
 
 .suggestions-container {
     position: absolute;
     z-index: 1000;
     color : black;
+    width: 100%;
 }
