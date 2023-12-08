@@ -10,15 +10,15 @@ const CityPage = () => {
         {name:"Zocca", lon:"10.99", lat:"44.34"},
     );
 
-    const {lat , lon} = useParams();
-    console.log(lat, lon)
+    const {city, lat, lon} = useParams();
+    console.log(city, lat, lon)
     
     return (
         <>
-            <h1>City Page</h1>
-            <CurrentWeatherWidget cityData={cities}/>
-            <NextHoursWidget cityData={cities}/>
-            <NextDaysWidget cityData={cities}/>
+            <h1>{city}</h1>
+            <CurrentWeatherWidget cityData={{city, lat, lon}}/>
+            <NextHoursWidget cityData={{city, lat, lon}}/>
+            <NextDaysWidget cityData={{city, lat, lon}}/>
         </>
     )
 }
