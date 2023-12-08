@@ -1,15 +1,20 @@
 //import axios from 'axios'
 import './HomePage.scss'
-import { useState  } from 'react'
+import { useState , useEffect } from 'react'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import CityCard from '../../components/CityCard/CityCard'
 
 const HomePage = () => {
 
     //State des villes
-    const [cities, setCities] = useState([
-        {name:'Orléans', lon:"10.99", lat:"44.34"},
-    ]);
+    const [cities, setCities] = useState(() => {
+        const savedCities = localStorage.getItem('cities');
+        return savedCities ? JSON.parse(savedCities) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem('cities' , JSON.stringify(cities));
+    },[cities])
 
     const onDeleteCard = (cardElement) => {
         const deleteCard = cities.filter((city, index) => index !== cardElement);

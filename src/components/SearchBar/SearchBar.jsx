@@ -32,7 +32,7 @@ const SearchBar = ({ cities, setCities }) => {
         >
             {({ getInputProps, suggestions, getSuggestionItemProps }) => (
                     <div className='search-bar'>
-                        <input className='search-bar-input' {...getInputProps({ placeholder: 'Recherchez une ville...' })} />
+                        <input className='search-bar-input' {...getInputProps({ placeholder: 'Ajouter une ville' })} />
                         <div className="suggestions-container" >
                             {suggestions.map((suggestion , index) => {
                                 const style = suggestion.active
