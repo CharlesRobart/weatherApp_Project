@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect  } from 'react'
 import './NextDaysWidget'
+const API_KEY = import.meta.env.VITE_API_KEY
 
 const NextDaysWidget = ({cityData}) => {
     console.log(cityData)
@@ -12,7 +13,7 @@ const NextDaysWidget = ({cityData}) => {
     const fetchNextDaysWeather = async () => {
         
         try {
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${cityData.lat}&lon=${cityData.lat}&appid=ac2ddbeaf63004ea80756a0156a76da8&units=metric`);
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${cityData.lat}&lon=${cityData.lat}&appid=${API_KEY}&lang=fr&units=metric`);
             
             setNextDaysWeather(response.data);
         }
@@ -50,14 +51,14 @@ const NextDaysWidget = ({cityData}) => {
 
     console.log(filterForNoonForecast(nextDaysWeather.list))
     return (
-        <>  
+        <div className='city-page-widget'>
             {!loading && 
             <>
             <h2>Météo des prochains jours</h2>
             <div>
             {filterForNoonForecast(nextDaysWeather.list).map((city, index) => {
                 return (
-                    <p key={index}>{convertUnixTimeToDate(city.dt)} {city.weather[0].main}</p>
+                    <p key={index}>{convertUnixTimeToDate(city.dt)} {city.weather[0].description}</p>
                 )
             })}
                 
@@ -65,7 +66,7 @@ const NextDaysWidget = ({cityData}) => {
             </>
             }
             
-        </>
+        </div>
     )
 }
 
