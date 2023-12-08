@@ -14,7 +14,7 @@ const CityPage = () => {
             <h1> City Page</h1>
             <CurrentWeatherWidget cityData={cities}/>
             <NextHoursWidget cityData={cities}/>
-            
+            <NextDaysWidget />
         </>
     )
 }
