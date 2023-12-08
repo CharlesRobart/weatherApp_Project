@@ -6,6 +6,11 @@
   padding-bottom: 5%;
 }
 
+.city-card-link {
+  text-decoration: none;
+  color: white;
+}
+
 .city-card-container {
 
   display: flex;
@@ -15,6 +20,6 @@
   }
 
   .home-page-container {
-
+    width: 100%;
     padding: 5%;
   }

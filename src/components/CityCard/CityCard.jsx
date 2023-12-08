@@ -41,7 +41,7 @@ const CityCard = ({cityData, onDeleteCard}) => {
             <section id = {currentWeather.id} className='city-card'>
                 <button onClick={(event)=> deleteCard(event)} className='city-card-delete'> X </button>
                 <div className='city-card-flex'>
-                    <h2 className='city-card-title'> {currentWeather.name} </h2>
+                    <h2 className='city-card-title'> {cityData.name} </h2>
                     <p className='city-card-description'>{currentWeather.weather[0].description} </p>
                 </div>
                 <div className='city-card-flex'>
