@@ -15,6 +15,11 @@ const HomePage = () => {
 
 
     ]);
+
+    const onDeleteCard = (cardElement) => {
+        const deleteCard = cities.filter((city, index) => index !== cardElement);
+        setCities(deleteCard);
+      };
     
     return (
         <div className='home-page-container'>
@@ -22,7 +27,7 @@ const HomePage = () => {
             <SearchBar cities={cities} setCities = {setCities} />
             <div className='city-card-container'>
                 {cities.map((city, index) => {
-                    return (<CityCard key={index} cityData={city} />)
+                    return (<CityCard key={index} cityData={city}  onDeleteCard={() => onDeleteCard(index)} />)
                 })}
             </div>
         </div>
