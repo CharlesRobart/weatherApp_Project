@@ -34,7 +34,7 @@ const MyPositionCard = ({cityData}) => {
 
         <>  
             {!loading && 
-            <section id = {currentWeather.id} className='city-card'>
+            <section id = {currentWeather.id} className={`city-card city-card-${currentWeather.weather[0].main}`}>
                 <Link className='city-card-link' to={`/${cityData.name}/${cityData.lat}/${cityData.lon}`}> 
                     <div className='city-card-flex'>
                         <h2 className='city-card-title'> {cityData.name} </h2>

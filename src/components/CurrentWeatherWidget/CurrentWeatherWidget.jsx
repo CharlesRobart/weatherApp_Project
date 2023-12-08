@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect  } from 'react'
 import './CurrentWeatherWidget.scss'
+import '../CityCard/CityCard.scss'
 
 const CurrentWeatherWidget = ({cityData}) => {
     
@@ -29,7 +30,7 @@ const CurrentWeatherWidget = ({cityData}) => {
     return (
         <>  
             {!loading && 
-            <div className='city-page-widget city-page-widget--current'>
+            <div className={`city-page-widget city-page-widget--current city-card city-card-${currentWeather.weather[0].main}`}>
                 <h2 className='current-card-title'>Actuellement</h2>
 
                 <div className='current-card-resum'>
