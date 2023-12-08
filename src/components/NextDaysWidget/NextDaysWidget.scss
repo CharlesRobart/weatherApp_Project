@@ -1,0 +1,20 @@
+ .next-day-container{
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+ }
+
+ .next-day-time-icon{
+
+  display: flex;
+  flex-direction: column;
+ }
+
+ .next-day-title{
+  margin: 0;
+ }
+
+ .next-day-card-img{
+  max-width: 50%;
+ }

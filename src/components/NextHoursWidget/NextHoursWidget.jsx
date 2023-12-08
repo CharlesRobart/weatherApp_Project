@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect  } from 'react'
-import './NextHoursWidget'
+import './NextHoursWidget.scss'
 
 const NextHoursWidget = ({cityData}) => {
     
@@ -35,20 +35,23 @@ const NextHoursWidget = ({cityData}) => {
     
     return (
         <div className='city-page-widget'>  
-            {!loading && 
-            <>
-            <h2>Météo des prochaines heures</h2>
-            <div>
-            {nextHoursWeather.list.slice(0, 5).map((city, index) => {
-                return (
-                    <p key={index}>{convertUnixTimeToTime(city.dt)} {city.main.temp}°</p>
-                )
-            })}
-                
-            </div>
-            </>
-            }
-            
+          {!loading && 
+          <article>
+            <h2 className='current-card-title'>Météo des prochaines heures</h2>
+            <div  className='next-hours-container'>
+              {nextHoursWeather.list.slice(0, 5).map((city, index) => {
+                  return (
+                      <div key={index}>
+                        <p className='next-hours-hour' >{convertUnixTimeToTime(city.dt)}</p>
+                        <p>{Math.floor(city.main.temp)}°</p>
+                      </div>
+                  )
+              })}
+              </div>
+                  
+          </article>
+          }
+          
         </div>
     )
 }

@@ -11,10 +11,40 @@
   justify-content: space-between;
   width: 100%;
   border-radius: 25px;
-  background: v.$background1;
-  background: v.$background2;
+  background: v.$backgroundB1;
+  background: v.$backgroundB2;
   padding: 4%;
 }
+
+.city-card-Rain{
+  background-image: url('../../img/Pluie.jpg');
+  background-size: cover;
+
+}
+
+.city-card-Clouds{
+  background-image: url('../../img/Nuages.jpg');
+  background-size: cover;
+}
+
+.city-card-Smoke{
+  background-image: url('../../img/Brouillard.jpg!d');
+  background-size: cover;
+
+}
+
+.city-card-Clear{
+  background-image: url('../../img/ciel-bleu.jpg');
+  background-size: cover;
+}
+
+.city-card-Snow{
+
+  background-image: url('../../img/Neige.jpg!d');
+  background-size: cover;
+
+}
+
 
 .city-card-flex {
   display: flex;
