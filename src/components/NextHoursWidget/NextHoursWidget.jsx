@@ -34,7 +34,7 @@ const NextHoursWidget = ({cityData}) => {
 
     
     return (
-        <>  
+        <div className='city-page-widget'>  
             {!loading && 
             <>
             <h2>Météo des prochaines heures</h2>
@@ -49,7 +49,7 @@ const NextHoursWidget = ({cityData}) => {
             </>
             }
             
-        </>
+        </div>
     )
 }
 

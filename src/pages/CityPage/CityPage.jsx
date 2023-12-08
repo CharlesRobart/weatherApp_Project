@@ -1,4 +1,4 @@
-import './CityPage'
+import './CityPage.scss'
 import NextDaysWidget from '../../components/NextDaysWidget/NextDaysWidget'
 import NextHoursWidget from '../../components/NextHoursWidget/NextHoursWidget'
 import CurrentWeatherWidget from '../../components/CurrentWeatherWidget/CurrentWeatherWidget'
@@ -14,12 +14,13 @@ const CityPage = () => {
     console.log(city, lat, lon)
     
     return (
-        <>
-            <h1>{city}</h1>
+        <div className='city-page-container'>
+        
+            <h1 className='city-page-title'>{city}</h1>
             <CurrentWeatherWidget cityData={{city, lat, lon}}/>
             <NextHoursWidget cityData={{city, lat, lon}}/>
             <NextDaysWidget cityData={{city, lat, lon}}/>
-        </>
+        </div>
     )
 }
 
