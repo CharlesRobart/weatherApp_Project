@@ -13,6 +13,11 @@ const HomePage = () => {
     });
 
     useEffect(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            console.log('lat: ' ,position.coords.latitude);
+            console.log('lon: ' ,position.coords.longitude);
+        });
+
         localStorage.setItem('cities' , JSON.stringify(cities));
     },[cities])
 
