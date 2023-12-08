@@ -29,6 +29,7 @@ const HomePage = () => {
                 {cities.map((city, index) => {
 
                     return (
+                        
                         <CityCard key={index} cityData={city}  onDeleteCard={() => onDeleteCard(index)}/>
                     )
 

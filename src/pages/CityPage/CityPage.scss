@@ -1,0 +1,27 @@
+@use '../../../variables'as v;
+
+.city-page-container{
+
+  display: flex;
+  flex-direction: column;
+  gap : 10%;
+
+}
+
+.city-page-title {
+
+  text-align: center;
+  font-size: 3em;
+  margin: 0%;
+  padding-bottom: 5%;
+  
+}
+
+.city-page-widget {
+  width: 100%;
+  border-radius: 25px;
+  background: v.$background1;
+  background: v.$background2;
+  padding: 4%;
+
+}
